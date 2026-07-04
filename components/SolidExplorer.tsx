@@ -222,7 +222,7 @@ export default function SolidExplorer() {
       animationFrameId = requestAnimationFrame(animate);
       
       // Auto rotation when not user-controlling to emphasize 3D
-      if (solidMeshRef.current && !controls.state === -1) {
+      if (solidMeshRef.current && controls.state !== -1) {
         solidMeshRef.current.rotation.y += 0.003;
       }
       
