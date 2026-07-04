@@ -259,7 +259,9 @@ export default function SolidExplorer() {
   // 3. Rebuild 3D Solid whenever the user path points change
   useEffect(() => {
     const scene = sceneRef.current;
-    if (!scene || points.length < 2) {
+    if (!scene) return;
+
+    if (points.length < 2) {
       // Remove mesh if points are cleared
       if (solidMeshRef.current) {
         scene.remove(solidMeshRef.current);
