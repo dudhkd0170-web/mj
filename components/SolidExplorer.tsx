@@ -258,8 +258,8 @@ export default function SolidExplorer() {
 
   // 3. Rebuild 3D Solid whenever the user path points change
   useEffect(() => {
-    const scene = sceneRef.current;
-    if (!scene) return;
+    if (!sceneRef.current) return;
+    const scene: THREE.Scene = sceneRef.current;
 
     if (points.length < 2) {
       // Remove mesh if points are cleared
@@ -271,19 +271,15 @@ export default function SolidExplorer() {
     }
 
     // Convert Canvas coordinates to Three.js coordinates
-    // Canvas dimensions: 340 x 440, AXIS_X = 30
     const threePoints = points.map((p) => {
-      // Distance from the rotation axis in ThreeJS X units
       const r = (p.x - AXIS_X) / POINT_SCALE;
-      // Height in ThreeJS Y units (center of canvas is Y=0)
       const h = (CANVAS_HEIGHT / 2 - p.y) / POINT_SCALE;
-      return new THREE.Vector2(Math.max(0.001, r), h); // Clamp to positive radius
+      return new THREE.Vector2(Math.max(0.001, r), h);
     });
 
-    // Create Lathe Geometry
-    // 32 segments, full 360-degree rotation (2 * PI)
+    // Create Lathe Geometry (48 segments, full 360-degree rotation)
     const geometry = new THREE.LatheGeometry(threePoints, 48);
-    
+
     // Indigo gloss material
     const material = new THREE.MeshStandardMaterial({
       color: 0x4f46e5,
@@ -297,7 +293,7 @@ export default function SolidExplorer() {
     mesh.castShadow = true;
     mesh.receiveShadow = true;
 
-    // Add fine lines mapping (wireframe) to outline the geometric structure
+    // Add wireframe overlay
     const wireframeGeom = new THREE.WireframeGeometry(geometry);
     const wireframeMat = new THREE.LineBasicMaterial({
       color: 0x818cf8,
