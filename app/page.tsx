@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import SolidExplorer from "@/components/SolidExplorer";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -25,7 +25,7 @@ export default function Home() {
       </header>
 
       {/* Main Content */}
-      <main className="flex-grow py-12 px-4 sm:px-6 lg:px-8">
+      <main className="flex-grow py-20 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center">
         
         {/* Intro Hero Section */}
         <section className="max-w-4xl mx-auto text-center mb-12">
@@ -36,54 +36,30 @@ export default function Home() {
             </span>
           </div>
           
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-4 leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-6 leading-tight">
             실시간{" "}
             <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 dark:from-indigo-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
               3D 회전체 탐구실
             </span>
           </h1>
           
-          <p className="max-w-2xl mx-auto text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-            평면 도형을 회전축(빨간 점선)을 기준으로 회전시켰을 때 생기는 3D 회전체(원기둥, 원뿔, 구 등)를 탐구해봅시다. 
+          <p className="max-w-2xl mx-auto text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-10">
+            평면 도형을 회전축을 기준으로 회전시켰을 때 생기는 3D 회전체(원기둥, 원뿔, 구 등)를 탐구해봅시다. 
             단면을 직접 그리고 마우스로 회전해 보며 기하학적 원리를 손쉽게 체험해보세요!
           </p>
-        </section>
 
-        {/* Core Component Area */}
-        <section className="mb-12">
-          <SolidExplorer />
-        </section>
-
-        {/* Educational Mentor Guide Tips */}
-        <section className="max-w-4xl mx-auto bg-indigo-50/50 dark:bg-indigo-950/20 border border-indigo-100/50 dark:border-indigo-900/40 rounded-3xl p-6 md:p-8">
-          <h3 className="text-base font-bold text-indigo-950 dark:text-indigo-200 mb-3 flex items-center space-x-2">
-            <span>💡</span>
-            <span>코딩 멘토의 교육용 탐구 가이드</span>
-          </h3>
-          <ul className="space-y-3 text-xs md:text-sm text-slate-600 dark:text-slate-300">
-            <li className="flex items-start">
-              <span className="text-indigo-500 mr-2">📌</span>
-              <span><strong>직사각형 그리기 (원기둥)</strong>: 격자 스냅 모드에서 회전축과 평행한 수직선을 그린 뒤 닫아주면 원기둥이 탄생합니다.</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-indigo-500 mr-2">📌</span>
-              <span><strong>직각삼각형 그리기 (원뿔)</strong>: 축에서 출발하여 빗변을 그리고 다시 축으로 연결하면 깔끔한 원뿔이 렌더링됩니다.</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-indigo-500 mr-2">📌</span>
-              <span><strong>반원 그리기 (구)</strong>: 자유 곡선 모드로 축의 한 점에서 출발해 둥근 반원을 그리고 반대편 축 끝점으로 돌아오면 완벽한 공 모양의 구가 나타납니다!</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-indigo-500 mr-2">📌</span>
-              <span><strong>축과 떨어뜨려 그리기 (도넛)</strong>: 회전축에서 오른쪽으로 간격을 살짝 띄운 채 사각형이나 원을 그리면 가운데가 뚫린 도넛(토러스) 모양이 생성됩니다.</span>
-            </li>
-          </ul>
+          <Link 
+            href="/explorer"
+            className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-2xl shadow-lg shadow-indigo-600/30 hover:shadow-indigo-600/50 transform hover:-translate-y-1 transition-all duration-300"
+          >
+            3D 회전체 탐구실 입장하기 🚀
+          </Link>
         </section>
 
       </main>
 
       {/* Footer */}
-      <footer className="w-full bg-slate-100/50 dark:bg-slate-950/50 border-t border-slate-200/50 dark:border-slate-800/50 py-8 transition-colors duration-300">
+      <footer className="w-full bg-slate-100/50 dark:bg-slate-950/50 border-t border-slate-200/50 dark:border-slate-800/50 py-8 transition-colors duration-300 mt-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-500 dark:text-slate-400">
           <p className="mb-2">© 2026 EduBuilder. All rights reserved.</p>
           <p className="text-xs text-slate-400 dark:text-slate-500">
